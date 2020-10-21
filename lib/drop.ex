@@ -1,12 +1,14 @@
 defmodule Drop do
-  @doc """
-  Calculates the velocity of an object falling on earth as if   it were in a vacuum(no air resistance).
-  """
-  @spec fall_velocity(number()) :: number()
+  
+  def fall_velocity(:earth, distance) do
+    :math.sqrt(2 * 9.8 * distance)
+  end
 
-  def fall_velocity(distance) do
-    import :math, only: [sqrt: 1]
+  def fall_velocity(:moon, distance) do
+    :math.sqrt(2 * 1.6 * distance)
+  end
 
-    sqrt(2 * 9.8 * distance)
+  def fall_velocity(:mars, distance) do
+    :math.sqrt(2 * 3.71 * distance)
   end
 end
